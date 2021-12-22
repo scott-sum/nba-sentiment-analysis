@@ -1,0 +1,4 @@
+SQLALCHEMY_DATABASE_URI = 'sqlite:///db.sqlite'
+SECRET_KEY = 'secret-key-goes-here'
+SQLALCHEMY_TRACK_MODIFICATIONS = False
+TEMPLATES_AUTO_RELOAD = True

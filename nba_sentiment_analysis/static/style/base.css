@@ -1,0 +1,354 @@
+html, body{
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background-color: #FA8320;
+    font-family: "Calibri";
+    text-align: center;
+    color: white;
+}
+
+.flash {
+    font-size: 1rem;
+    margin: 1rem;
+
+}
+
+header {
+    margin-bottom: 2rem;
+    font-weight: bold;
+}
+
+.page-title {
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+    font-size: 4rem;
+    color: white;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 0rem 2rem;
+    background-color: #161616;
+}
+
+.nav-logo {
+    display: inline-block;
+    font-family: fantasy;
+    font-size: 2rem;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  margin: 0;
+}
+
+.nav-item a {
+  display: inline-block;
+  padding: 1.5rem;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+.navbar li a:hover:not(.active) {
+  background-color: #FA8320;
+}
+
+.navbar li a.active {
+  background-color: #1DA1F2;
+}
+
+/* *********************************************************** */
+
+
+.home-instructions {
+    margin-bottom: 0;
+    color: white;
+}
+
+.home-submit {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: white;
+    border-radius: 1rem;
+    border-style: none;
+    font-weight: bold;
+}
+
+.home-submit:hover {
+    background-color: #F6EFED;
+}
+
+.home-submit:active {
+    transform: scale(1.25);
+}
+
+.home-dropdown {
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 0.5rem 0rem;
+    margin: 2rem;
+    border-radius: 1rem;
+    border-style: none;
+    font-weight: bold;
+}
+
+.home-dropdown option {
+    font-size: 1rem;
+}
+
+.home-nba-logo {
+    width: 30%;
+    height: auto;
+}
+/* *********************************************************** */
+
+.res {
+    display: block;
+}
+
+.res-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+}
+
+.res-box {
+    display: flex
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+}
+
+.res-content {
+    width: 80%;
+}
+
+.res-cloud {
+    border-radius: 1rem;
+}
+
+.res-tweets {
+    display: block;
+    height: 30rem;
+    width: auto;
+    margin: 0% 10%;
+    overflow: auto;
+    padding: 0% 5%;
+    background-color: #1DA1F2;
+    text-align: left;
+    border-radius: 1rem;
+
+}
+
+.res-tw-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5% 0%;
+}
+
+.res-tw-usr {
+    display: block;
+    margin-right: 5%;
+    text-align: center;
+}
+
+.res-tw-usr-img {
+    width: 5rem;
+    border-radius: 50%;
+    height: auto;
+}
+
+.res-tw-usr-name {
+
+}
+
+.res-tw-text {
+}
+
+.res-tw-link {
+    text-decoration: none;
+}
+
+.res-tw-time {
+    color: white;
+}
+
+.res-tweets-box h3, .res-arts-box h3 {
+    text-align: center;
+}
+
+.res-arts-box {
+    display: block;
+}
+
+.res-arts {
+    width: auto;
+    display: block;
+    margin: 0rem 5rem;
+    background-color: black;
+    border-radius: 1rem;
+
+}
+
+.res-art-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+}
+
+.res-art-text {
+    text-align: left;
+}
+
+.res-art-link {
+    color: white;
+    text-decoration: none;
+}
+
+.res-art-title {
+
+}
+
+.res-art-img {
+    width: 20rem;
+    height: auto;
+    max-width: 100%;
+    margin-left: 2rem;
+    border-radius: 1rem;
+}
+
+.res-return {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: white;
+    border-radius: 1rem;
+    border-style: none;
+}
+
+.res-return:hover {
+    background-color: #F6EFED;
+}
+
+.res-return:active {
+    transform: scale(1.5);
+}
+
+/* *********************************************************** */
+
+.pro-saved-title {
+    font-size: 2rem;
+}
+
+.pro-saved-list {
+    margin-bottom: 5rem;
+}
+
+.pro-saved-team-box {
+    display: inline-block;
+    margin-right: 2rem;
+    border-radius: 2rem;
+    position: relative;
+}
+
+.pro-saved-team-btn {
+    padding: 1rem;
+    border-radius: 1rem;
+    border-style: none;
+    background-color: #161616;
+}
+
+.pro-saved-team-name {
+    color: white;
+    font-family: Calibri;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.pro-saved-team-logo {
+    width: 4rem;
+    height: 4rem;
+}
+
+
+.pro-saved-team-title {
+    font-size: 2.5rem;
+}
+
+.pro-saved-team-remove {
+    position: absolute;
+    top: 8px;
+    width: 2rem;
+    height: auto;
+}
+
+.pro-saved-team-remove-btn {
+    border-style: none;
+}
+
+.pro-content {
+    display: none;
+    margin-bottom: 5rem;
+}
+
+.pro-save-form {
+    margin-bottom: 5rem;
+}
+
+.pro-stats-title {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.pro-stats-box {
+    text-align: center;
+}
+
+.pro-stat {
+    font-size: 1.5rem;
+}
+
+.pro-save-another {
+    font-size: 2rem;
+    margin-bottom: 0;
+}
+
+
+
+/* *********************************************************** */
+
+.login-control input, .sign-control input{
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    border-style: none;
+}
+
+.login-field, .sign-field {
+    margin-bottom: 2rem;
+}
+
+.login-btn, .sign-btn {
+    background-color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    border-style: none;
+    font-size: 1rem;
+}
+
+.login-btn:hover, .sign-btn:hover {
+    background-color: #F6EFED;
+}
+
+.login-btn:active, .sign-btn:active {
+    transform: scale(1.25);
+}
+

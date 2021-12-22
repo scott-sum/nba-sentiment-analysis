@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style/base.css')}}">
+    <link rel="shortcut icon" type="image/jpg" href="{{url_for('static', filename='images/favicon.ico')}}">
+</head>
+<body>
+    {% block navigation %}{% endblock %}
+    <section class="content">
+        <header>
+            {% block header %}{% endblock %}
+        </header>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class=flash>
+                    {{ messages[0] }}
+                </div>
+            {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </section>
+</body>
+</html>

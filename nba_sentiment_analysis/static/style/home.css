@@ -1,0 +1,53 @@
+.logo {
+    height: 50px;
+    width: 50px;
+}
+
+body {
+    background-color: black;
+    font-family: "Calibri";
+    text-align: center;
+
+}
+
+.title, .instructions {
+    color: white;
+}
+
+.title {
+    margin-top: 4rem;
+    margin-bottom: 10%;
+    font-size: 4rem;
+}
+
+.instructions {
+margin-bottom: 0;
+}
+
+.submit {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: white;
+    border-radius: 1rem;
+    border-style: none;
+}
+
+.submit:hover {
+    background-color: blue;
+}
+
+.submit:active {
+    transform: scale(1.5);
+}
+
+.dropdown {
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 0.5rem 0rem;
+    margin: 2rem;
+    border-radius: 1rem;
+}
+
+.dropdown option {
+font-size: 1rem;
+}

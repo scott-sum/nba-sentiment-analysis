@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+
+{% block navigation %}
+    <nav class="navbar">
+        <a class="nav-logo">NBA Sentiment Analysis</a>
+        <ul class="nav-links">
+            <li class="nav-item"><a href="{{ url_for('main.index') }}">Home</a></li>
+
+            {% if not current_user.is_authenticated %}
+            <li class="nav-item"><a href="{{ url_for('auth.signup') }}">Sign Up</a></li>
+            <li class="nav-item"><a href="{{ url_for('auth.login') }}">Login</a></li>
+            {% endif %}
+
+            {% if current_user.is_authenticated %}
+            <li class="nav-item"><a class="active" href="{{ url_for('main.profile') }}">Profile</a></li>
+            <li class="nav-item"><a href="{{ url_for('auth.logout') }}">Logout</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+{% endblock %}
+
+{% block header %}
+<h1 class="page-title">{% block title %}{{ name }}'s Profile{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <h3 class="pro-saved-title">Saved Teams ({{ teams|length }})</h3>
+    {% if not teams %}
+        <p class="pro-no-saved">You have no teams saved so far</p>
+    {% else %}
+        <div class="pro-saved-list">
+            {% for team in teams %}
+                <div class="pro-saved-team-box">
+                    <button class="pro-saved-team-btn" id="{{ teams[loop.index0] | replace(' ', '') + 'button' }}"
+                            onclick="show_team('{{ team | replace(' ', '') }}', '{{ team | replace(' ', '') + 'button' }}')">
+                        <img class="pro-saved-team-logo" src="/static/logos/{{ teams[loop.index0] | replace(' ', '') }}.png">
+                        <p class="pro-saved-team-name">{{ team.title() }}</p>
+                    </button>
+                    <div class="pro-saved-team-remove">
+                        <form action="{{ url_for('main.remove_team', team_to_remove=team) }}">
+                            <input type="image" src="/static/images/remove.png" class="pro-saved-team-remove-btn" type="submit"/>
+                        </form>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        {% for url_group in urls %}
+            <div class="pro-content" id="{{ teams[loop.index0] | replace(' ', '') }}">
+                <h3 class="pro-saved-team-title">{{ teams[loop.index0].title() }}</h3>
+                <div class="res-row">
+                    <div class="res-box">
+                        <img class="res-bar" src={{ url_group[0] }}>
+                    </div>
+                    <div class="res-box">
+                        <img class="res-time" src={{ url_group[2] }}>
+                    </div>
+                </div>
+                <div class="res-row">
+                    <div class="res-box">
+                        <img class="res-cloud" src={{ url_group[1] }}>
+                    </div>
+                    <div class="res-box">
+                        <div class="pro-stats">
+                            <h1 class="pro-stats-title">Past Week Stats</h1>
+                            <div class="pro-stats-box">
+                                <p class="pro-stat">Average Sentiment Score: {{ stats[loop.index0][0] }}</p>
+                                <p class="pro-stat">Lowest Sentiment Score: {{ stats[loop.index0][1] }}</p>
+                                <p class="pro-stat">Highest Sentiment Score: {{ stats[loop.index0][2] }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <script>
+        function show_team(team, team_btn) {
+            x = document.getElementById(team);
+            btn = document.getElementById(team_btn);
+            if (x.style.display != "block") {
+                x.style.display = "block";
+                btn.style.backgroundColor = '#1DA1F2';
+            } else {
+                x.style.display = "none";
+                btn.style.backgroundColor = '#161616';
+            }
+        }
+    </script>
+
+    <h3 class="pro-save-another">Save Another Team</h3>
+    <form class="pro-save-form" action="{{ url_for('main.profile') }}" method="POST">
+        <select class="home-dropdown" id="team-select" name="team">
+            <option value="atlanta hawks" data-imagesrc="{{url_for('static', filename='logos/atlantahawks.png')}}">Atlanta Hawks</option>
+            <option value="boston celtics" data-imagesrc="{{url_for('static', filename='logos/bostonceltics.png')}}">Boston Celtics</option>-->
+            <option value="brooklyn nets" data-imagesrc="{{url_for('static', filename='logos/brooklynnets.png')}}">Brooklyn Nets</option>
+            <option value="charlotte hornets" data-imagesrc="{{url_for('static', filename='logos/charlottehornets.png')}}">Charlotte Hornets</option>
+            <option value="chicago bulls" data-imagesrc="{{url_for('static', filename='logos/chicagobulls.png')}}">Chicago Bulls</option>
+            <option value="cleveland cavaliers" data-imagesrc="{{url_for('static', filename='logos/clevelandcavaliers.png')}}">Cleveland Cavaliers</option>
+            <option value="dallas mavericks" data-imagesrc="{{url_for('static', filename='logos/dallasmavericks.png')}}">Dallas Mavericks</option>
+            <option value="denver nuggets" data-imagesrc="{{url_for('static', filename='logos/denvernuggets.png')}}">Denver Nuggets</option>
+            <option value="detroit pistons" data-imagesrc="{{url_for('static', filename='logos/detroitpistons.png')}}">Detroit Pistons</option>
+            <option value="golden state warriors" data-imagesrc="{{url_for('static', filename='logos/goldenstatewarriors.png')}}">Golden State Warriors</option>
+            <option value="houston rockets" data-imagesrc="{{url_for('static', filename='logos/houstonrockets.png')}}">Houston Rockets</option>
+            <option value="indiana pacers" data-imagesrc="{{url_for('static', filename='logos/indianapacers.png')}}">Indiana Pacers</option>
+            <option value="los angeles clippers" data-imagesrc="{{url_for('static', filename='logos/losangelesclippers.png')}}">Los Angeles Clippers</option>
+            <option value="los angeles lakers" data-imagesrc="{{url_for('static', filename='logos/losangeleslakers.png')}}">Los Angeles Lakers</option>
+            <option value="memphis grizzlies" data-imagesrc="{{url_for('static', filename='logos/memphisgrizzlies.png')}}">Memphis Grizzlies</option>
+            <option value="miami heat" data-imagesrc="{{url_for('static', filename='logos/miamiheat.png')}}">Miami Heat</option>
+            <option value="milwaukee bucks" data-imagesrc="{{url_for('static', filename='logos/milwaukeebucks.png')}}">Milwaukee Bucks</option>
+            <option value="minnesota timberwolves" data-imagesrc="{{url_for('static', filename='logos/minnesotatimberwolves.png')}}">Minnesota Timberwolves</option>
+            <option value="new orleans pelicans" data-imagesrc="{{url_for('static', filename='logos/neworleanspelicans.png')}}">New Orleans Pelicans</option>
+            <option value="new york knicks" data-imagesrc="{{url_for('static', filename='logos/newyorkknicks.png')}}">New York Knicks</option>
+            <option value="oklahoma city thunder" data-imagesrc="{{url_for('static', filename='logos/oklahomacitythunder.png')}}">Oklahoma City Thunder</option>
+            <option value="orlando magic" data-imagesrc="{{url_for('static', filename='logos/orlandomagic.png')}}">Orlando Magic</option>
+            <option value="philadelphia 76ers" data-imagesrc="{{url_for('static', filename='logos/philadelphia76ers.png')}}">Philadelphia 76ers</option>
+            <option value="phoenix suns" data-imagesrc="{{url_for('static', filename='logos/phoenixsuns.png')}}">Phoenix Suns</option>
+            <option value="portland trail blazers" data-imagesrc="{{url_for('static', filename='logos/portlandtrailblazers.png')}}">Portland Trailblazers</option>
+            <option value="sacramento kings" data-imagesrc="{{url_for('static', filename='logos/sacramentokings.png')}}">Sacramento Kings</option>
+            <option value="san antonio spurs" data-imagesrc="{{url_for('static', filename='logos/sanantoniospurs.png')}}">San Antonio Spurs</option>
+            <option value="toronto raptors" selected="selected" data-imagesrc="{{url_for('static', filename='logos/torontoraptors.png')}}">Toronto Raptors</option>
+            <option value="utah jazz" data-imagesrc="{{url_for('static', filename='logos/utahjazz.png')}}">Utah Jazz</option>
+            <option value="washington wizards" data-imagesrc="{{url_for('static', filename='logos/washingtonwizards.png')}}">Washington Wizards</option>
+        </select>
+        <br><br>
+        <input class="home-submit" type="submit" value="Submit">
+    </form>
+{% endblock %}
+

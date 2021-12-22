@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block navigation %}
+    <nav class="navbar">
+        <a class="nav-logo">NBA Sentiment Analysis</a>
+        <ul class="nav-links">
+            <li class="nav-item"><a class="active" href="{{ url_for('main.index') }}">Home</a></li>
+
+            {% if not current_user.is_authenticated %}
+            <li class="nav-item"><a href="{{ url_for('auth.signup') }}">Sign Up</a></li>
+            <li class="nav-item"><a href="{{ url_for('auth.login') }}">Login</a></li>
+            {% endif %}
+
+            {% if current_user.is_authenticated %}
+            <li class="nav-item"><a href="{{ url_for('main.profile') }}">Profile</a></li>
+            <li class="nav-item"><a href="{{ url_for('auth.logout') }}">Logout</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+{% endblock %}
+
+{% block header %}
+    <h1 class="page-title">{% block title %}{{ team.title() }}{% endblock %}</h1>
+    <a href="{{ url_for('main.index') }}">
+        <button class="res-return">Choose another team</button>
+    </a>
+{% endblock %}
+
+{% block content %}
+    <div class="res">
+        <div class="res-row">
+            <div class="res-box">
+                <img class="res-content" src={{bar_url}}>
+            </div>
+            <div class="res-box">
+                <img class="res-content" src={{time_url}}>
+            </div>
+        </div>
+        <div class="res-row">
+            <div class="res-box">
+                <img class="res-content res-cloud" src={{wc_url}}>
+            </div>
+            <div class="res-box">
+                <h3>Related Tweets</h3>
+                <div class="res-content res-tweets">
+                    {% for tweet in tweets %}
+                        <div class="res-tw-container">
+                            <div class="res-tw-usr">
+                                <img class="res-tw-usr-img" src="{{ tweet[1] }}">
+                                <p class="res-tw-usr-name">{{ tweet[0] }}</p>
+                            </div>
+                            <div class="res-tw-text">
+                                <a class="res-tw-link" href="{{ tweet[4] }}" target="_blank">
+                                    <p class="res-tw-time">{{ tweet[2] }}: {{ tweet[3] }}</p>
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="res-arts-box">
+            <h3>Related Articles</h3>
+            <div class="res-arts">
+                {% for article in news %}
+                    <div class="res-art-container">
+                        <div class="res-art-text">
+                            <a class="res-art-link" href="{{ article[2] }}" target="_blank">
+                                <h1 class="res-art-title">{{ article[0] }}</h1>
+                            </a>
+                            <p>{{ article[4] }} - {{ article[1] }}</p>
+                        </div>
+                        <img class="res-art-img" src="{{ article[3] }}">
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+
+    <br><br>
+{% endblock %}

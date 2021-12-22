@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block navigation %}
+    <nav class="navbar">
+        <a class="nav-logo">NBA Sentiment Analysis</a>
+        <ul class="nav-links">
+            <li class="nav-item"><a href="{{ url_for('main.index') }}">Home</a></li>
+
+            {% if not current_user.is_authenticated %}
+            <li class="nav-item"><a class="active" href="{{ url_for('auth.signup') }}">Sign Up</a></li>
+            <li class="nav-item"><a href="{{ url_for('auth.login') }}">Login</a></li>
+            {% endif %}
+
+            {% if current_user.is_authenticated %}
+            <li class="nav-item"><a href="{{ url_for('main.profile') }}">Profile</a></li>
+            <li class="nav-item"><a href="{{ url_for('auth.logout') }}">Logout</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+{% endblock %}
+
+{% block header %}
+    <h1 class="page-title">{% block title %}Sign Up{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <div class="sign-container">
+        <div class="sign-box">
+            <form method="POST" action="/signup">
+                <div class="sign-field">
+                    <div class="sign-control">
+                        <input type="email" name="email" placeholder="Email" autofocus="">
+                    </div>
+                </div>
+                <div class="sign-field">
+                    <div class="sign-control">
+                        <input type="text" name="name" placeholder="Name" autofocus="">
+                    </div>
+                </div>
+                <div class="sign-field">
+                    <div class="sign-control">
+                        <input type="password" name="password" placeholder="Password">
+                    </div>
+                </div>
+
+                <button class="sign-btn">Continue</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
