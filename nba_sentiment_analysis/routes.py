@@ -1,6 +1,7 @@
 from flask import Flask, render_template, flash, request, redirect, url_for, Blueprint
 from . import functions
 from flask_login import login_required, current_user
+from .settings import news_api_key
 from .models import Score, SavedTeam, User
 from .extensions import db
 from datetime import datetime, timedelta
@@ -24,7 +25,7 @@ def analysis():
            f'q="{team_chosen}"&'
            f'from={datetime.today() - timedelta(7)}&'
            'sortBy=popularity&'
-           f'apiKey={functions.API_KEY}')
+           f'apiKey={news_api_key}')
     news_articles = functions.get_news(url, 5)
     print("got news")
     return render_template('results.html', team=team_chosen, tweets=tweets, news=news_articles,

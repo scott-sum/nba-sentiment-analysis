@@ -8,15 +8,10 @@ import requests, re, os, string
 
 from wordcloud import WordCloud
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
+from .settings import tw_access_token, tw_secret_access_token, tw_consumer_secret_key, tw_consumer_key
 
-# Twitter API credentials
-consumer_key = 'roMEay9khmq49uQA3XUH6amMO'
-consumer_secret = 'hqM9EhFj8R8PHnZSoePWKukqfxCN0q4ssbyXCD07ffuhodA61H'
-access_token = '1375426756358905858-VW8JUPy5DGfPoAKMOblOMH495JAyn5'
-access_token_secret = '8v9cANUCxNMWubiGJBK5s1HHo7Be88RobMIoemjcqS7TF'
-
-auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-auth.set_access_token(access_token, access_token_secret)
+auth = tweepy.OAuthHandler(tw_consumer_key, tw_consumer_secret_key)
+auth.set_access_token(tw_access_token, tw_secret_access_token)
 api = tweepy.API(auth, wait_on_rate_limit=True)
 
 stop_words = stopwords.words('english')
@@ -77,7 +72,6 @@ def preprocess_tweets(tweets, tokenizer):
 def analysis(team_name, num_tweets, mode=1):
     team_nospace = team_name.replace(" ", "_")
     if mode != 1:
-        print("analyzing")
         tweets = tweepy.Cursor(api.search, q=team_name).items(10)
         return [(tweet['user'], tweet['user_img'], tweet['created_at'], tweet['text'], tweet['link'])
                 for tweet in sentiment_distribution(tweets, mode=2)]
@@ -109,10 +103,7 @@ def analysis(team_name, num_tweets, mode=1):
 
 #################### NEWS
 
-API_KEY = 'a119411c756f40c0be74c11bcf2c8521'
-
 def get_news(url, num_articles=5):
-    print(url)
     response = requests.get(url).json()
     if response is not None:
         articles = response['articles']
