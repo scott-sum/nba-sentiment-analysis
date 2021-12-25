@@ -66,7 +66,7 @@ def create_app():
     app.register_blueprint(main_blueprint)
 
     scheduler = BackgroundScheduler({'apscheduler.timezone': 'UTC'})
-    scheduler.add_job(lambda: job(app), trigger='interval', hours=24)
+    scheduler.add_job(lambda: job(app), trigger='interval', hours=5)
     scheduler.start()
     atexit.register(lambda: scheduler.shutdown())
 
