@@ -6,6 +6,7 @@ sched = BackgroundScheduler({'apscheduler.timezone': 'UTC'})
 
 @sched.scheduled_job('interval', hours=1)
 def update():
+	print("before job")
 	job(app)
 
 sched.start()

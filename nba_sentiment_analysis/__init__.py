@@ -18,6 +18,7 @@ teams = ["atlanta hawks","boston celtics","brooklyn nets","charlotte hornets","c
          "toronto raptors","utah jazz","washington wizards"]
 
 def job(app):
+    print("hi")
     with app.app_context():
         for team in teams:
             team_nospace = team.replace(" ", "_")
