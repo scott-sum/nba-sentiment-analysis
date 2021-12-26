@@ -4,7 +4,7 @@ from nba_sentiment_analysis import job
 
 sched = BackgroundScheduler()
 
-@sched.scheduled_job('interval', hours='1')
+@sched.scheduled_job('interval', hours=1)
 def update():
 	job(app)
 
