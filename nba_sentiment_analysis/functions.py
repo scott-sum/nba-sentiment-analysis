@@ -93,7 +93,7 @@ def analysis(team_name, num_tweets, mode=1):
     word_cloud = WordCloud(background_color='white').generate_from_frequencies(word_frequencies)
     plt.clf()
     plt.imshow(word_cloud)
-    plt.title("Recent Tweets Wordcloud")
+    # plt.title("Recent Tweets Wordcloud")
     plt.axis('off')
     plt.tight_layout(pad=0)
     update_graphs(f'nba_sentiment_analysis/static/graphs/{team_nospace}/', 'wordcloud.png')

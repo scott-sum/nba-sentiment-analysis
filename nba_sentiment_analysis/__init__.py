@@ -36,7 +36,7 @@ def job(app):
                 x_date.append(score.date)
                 y_score.append(score.score)
             plt.clf()
-            plt.title(f"Sentiment for {team} over time")
+            plt.title(f"Sentiment for { team.title() } over time")
             plt.xlabel("Time")
             plt.ylabel("Sentiment Score")
             plt.plot(x_date, y_score)
