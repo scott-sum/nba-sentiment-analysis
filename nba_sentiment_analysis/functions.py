@@ -18,11 +18,11 @@ stop_words = stopwords.words('english')
 tw_tokenizer = TweetTokenizer()
 
 def update_graphs(base_dir, filename):
-    print(base_dir)
-    print(os.path.isdir(base_dir))
+    # print(base_dir)
+    # print(os.path.isdir(base_dir))
     if not os.path.isdir(base_dir):
         os.makedirs(base_dir)
-        print("created directory ", base_dir)
+        # print("created directory ", base_dir)
     file_path = os.path.join(base_dir, filename)
     if os.path.isfile(file_path):
         os.remove(file_path)
@@ -72,10 +72,10 @@ def preprocess_tweets(tweets, tokenizer):
 def analysis(team_name, num_tweets, mode=1):
     team_nospace = team_name.replace(" ", "_")
     if mode != 1:
-        tweets = tweepy.Cursor(api.search, q=team_name).items(10)
+        tweets = tweepy.Cursor(api.search_tweets, q=team_name).items(10)
         return [(tweet['user'], tweet['user_img'], tweet['created_at'], tweet['text'], tweet['link'])
                 for tweet in sentiment_distribution(tweets, mode=2)]
-    tweets = tweepy.Cursor(api.search, q=team_name).items(num_tweets)
+    tweets = tweepy.Cursor(api.search_tweets, q=team_name).items(num_tweets)
     positive, negative, neutral, tweet_list = sentiment_distribution(tweets)
     bar_labels = ['Negative', 'Neutral', 'Positive']
     scores_list = [positive, negative, neutral]

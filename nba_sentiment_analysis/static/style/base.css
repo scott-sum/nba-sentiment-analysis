@@ -5,7 +5,7 @@ html, body{
 
 body {
     background-color: #FA8320;
-    font-family: "Calibri";
+    font-family: Calibri, sans-serif;
     text-align: center;
     color: white;
 }
@@ -28,6 +28,8 @@ header {
     color: white;
 }
 
+
+
 .navbar {
     display: flex;
     align-items: center;
@@ -37,7 +39,7 @@ header {
 
 .nav-logo {
     display: inline-block;
-    font-family: fantasy;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 2rem;
 }
 
@@ -112,22 +114,42 @@ header {
     display: block;
 }
 
-.res-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 3rem;
+@media only screen and (max-width: 1025px) {
+    .res-row {
+        display: block;
+    }
+
+    .res-box {
+        margin-bottom: 3rem;
+    }
+
+    .res-content {}
+
+    .res-art-img {
+        width: 15rem;
+    }
 }
 
-.res-box {
-    display: flex
-    align-items: center;
-    justify-content: center;
-    width: 50%;
-}
+@media only screen and (min-width: 1025px) {
+    .res-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 3rem;
+    }
 
-.res-content {
-    width: 80%;
+    .res-box {
+        display: block;
+        width: 50%;
+    }
+
+    .res-content {
+        width: 80%;
+    }
+
+    .res-art-img {
+        width: 20rem;
+    }
 }
 
 .res-cloud {
@@ -167,7 +189,7 @@ header {
 }
 
 .res-tw-usr-name {
-
+    color: white;
 }
 
 .res-tw-text {
@@ -219,7 +241,6 @@ header {
 }
 
 .res-art-img {
-    width: 20rem;
     height: auto;
     max-width: 100%;
     margin-left: 2rem;

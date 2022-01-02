@@ -7,6 +7,8 @@ from .functions import analysis, update_graphs
 from .commands import create_tables
 from apscheduler.schedulers.background import BackgroundScheduler
 import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use('agg')
 import atexit
 from datetime import datetime
 
@@ -27,6 +29,7 @@ def job(app):
             db.session.commit()
 
             scores = Score.query.filter_by(team_name=team).order_by(Score.date).all()
+            print(len(scores))
             x_date = []
             y_score = []
             for score in scores:
