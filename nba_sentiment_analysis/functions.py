@@ -24,7 +24,7 @@ def update_graphs(base_dir, filename):
         os.makedirs(base_dir)
         print("created directory ", base_dir)
     file_path = os.path.join(base_dir, filename)
-    print('filepath ', file_path, ' ', os.path.isfile(file_path)))
+    print('filepath ', file_path, ' ', os.path.isfile(file_path))
     if os.path.isfile(file_path):
         os.remove(file_path)
 
