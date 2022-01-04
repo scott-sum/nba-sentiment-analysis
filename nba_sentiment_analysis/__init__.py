@@ -29,10 +29,11 @@ def job(app):
             db.session.commit()
 
             scores = Score.query.filter_by(team_name=team).order_by(Score.date).all()
-            print(len(scores))
+            # print(len(scores))
             x_date = []
             y_score = []
             for score in scores:
+                print(score.date)
                 x_date.append(score.date)
                 y_score.append(score.score)
             plt.clf()
