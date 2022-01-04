@@ -18,12 +18,13 @@ stop_words = stopwords.words('english')
 tw_tokenizer = TweetTokenizer()
 
 def update_graphs(base_dir, filename):
-    # print(base_dir)
-    # print(os.path.isdir(base_dir))
+    print(base_dir)
+    print(os.path.isdir(base_dir))
     if not os.path.isdir(base_dir):
         os.makedirs(base_dir)
-        # print("created directory ", base_dir)
+        print("created directory ", base_dir)
     file_path = os.path.join(base_dir, filename)
+    print('filepath ', file_path, ' ', os.path.isfile(file_path)))
     if os.path.isfile(file_path):
         os.remove(file_path)
 

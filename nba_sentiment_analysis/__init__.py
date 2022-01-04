@@ -33,7 +33,6 @@ def job(app):
             x_date = []
             y_score = []
             for score in scores:
-                print(score.date)
                 x_date.append(score.date)
                 y_score.append(score.score)
             plt.clf()
@@ -44,6 +43,7 @@ def job(app):
             plt.gcf().autofmt_xdate()
             update_graphs(f'nba_sentiment_analysis/static/graphs/{team_nospace}/', 'sentiment_vs_time.png')
             plt.savefig(f'nba_sentiment_analysis/static/graphs/{team_nospace}/sentiment_vs_time.png', transparent=True)
+            print('saved figure')
             plt.close()
 
 
