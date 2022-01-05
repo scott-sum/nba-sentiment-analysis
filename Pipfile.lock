@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "314a6729bfb664f163a36d3f5e4c326219e27b69bfd27bab5b8c9a8900138f18"
+            "sha256": "39bea393ea4409aa1e2164e4eb7f741d12d3c56d28a9a6f48f248453613a1e42"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -45,6 +45,22 @@
             ],
             "index": "pypi",
             "version": "==0.2.1"
+        },
+        "boto3": {
+            "hashes": [
+                "sha256:85287c742626baf0f0a1d5a2636db9483f95c9c1c9685599c3d5ae24ec24ace2",
+                "sha256:e7b8ef830b8f8770311d076cc89af35164b03bdf79683ea3a52b50c5f92be6d0"
+            ],
+            "index": "pypi",
+            "version": "==1.20.28"
+        },
+        "botocore": {
+            "hashes": [
+                "sha256:3a6e589486d1a269ea9c970da73f88e82fdfa6cb2ab4bb2a4b3010610adbde46",
+                "sha256:d04b0839de63929d7326e14a4680e7c46e7d32b2870c1031088bae5ba2850896"
+            ],
+            "markers": "python_version >= '3.6'",
+            "version": "==1.23.28"
         },
         "certifi": {
             "hashes": [
@@ -217,6 +233,14 @@
             ],
             "index": "pypi",
             "version": "==3.0.1"
+        },
+        "jmespath": {
+            "hashes": [
+                "sha256:b85d0567b8666149a93172712e68920734333c0ce7e89b78b3e987f71e5ed4f9",
+                "sha256:cdf6525904cc597730141d61b36f2e4b8ecc257c420fa2f4549bac2c2d0cb72f"
+            ],
+            "markers": "python_version >= '2.6' and python_version not in '3.0, 3.1, 3.2, 3.3'",
+            "version": "==0.10.0"
         },
         "joblib": {
             "hashes": [
@@ -661,6 +685,14 @@
             ],
             "index": "pypi",
             "version": "==1.3.0"
+        },
+        "s3transfer": {
+            "hashes": [
+                "sha256:50ed823e1dc5868ad40c8dc92072f757aa0e653a192845c94a3b676f4a62da4c",
+                "sha256:9c1dc369814391a6bda20ebbf4b70a0f34630592c9aa520856bf384916af2803"
+            ],
+            "markers": "python_version >= '3.6'",
+            "version": "==0.5.0"
         },
         "setuptools": {
             "hashes": [
