@@ -29,12 +29,12 @@ def analysis():
            f'apiKey={news_api_key}')
     news_articles = functions.get_news(url, 5)
 
-    print(os.path.isdir(f'/static/graphs/{team_nospace}/'))
+    print(os.path.isdir(f'nba_sentiment_analysis/static/graphs/{team_nospace}/'))
     print(os.getcwd())
 
-    download_from_s3(BUCKET_NAME, f'{team_nospace}/wordcloud.png', f'/static/graphs/{team_nospace}/wordcloud.png')
-    download_from_s3(BUCKET_NAME, f'{team_nospace}/sentiment_vs_time.png', f'/static/graphs/{team_nospace}/sentiment_vs_time.png')
-    download_from_s3(BUCKET_NAME, f'{team_nospace}/bar.png', f'/static/graphs/{team_nospace}/bar.png')
+    download_from_s3(BUCKET_NAME, f'{team_nospace}/wordcloud.png', f'nba_sentiment_analysis/static/graphs/{team_nospace}/wordcloud.png')
+    download_from_s3(BUCKET_NAME, f'{team_nospace}/sentiment_vs_time.png', f'nba_sentiment_analysis/static/graphs/{team_nospace}/sentiment_vs_time.png')
+    download_from_s3(BUCKET_NAME, f'{team_nospace}/bar.png', f'nba_sentiment_analysis/static/graphs/{team_nospace}/bar.png')
 
     return render_template('results.html', team=team_chosen, tweets=tweets, news=news_articles,
                            bar_url=f'/static/graphs/{team_nospace}/bar.png',

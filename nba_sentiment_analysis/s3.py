@@ -20,8 +20,10 @@ def upload_to_s3(bucket_name, file_path, team):
     print('uploaded')
 
 def download_from_s3(bucket_name, s3_key, dest_path):
-    print(s3_key)
-    print(dest_path)
+    file_dir, file_name = os.path.split(file_path)
+    if not os.path.isdir(file_dir):
+        os.makedirs(file_dir)
+        print('created dir')
     session = aws_session()
     s3_resource = session.resource('s3')
     bucket = s3_resource.Bucket(bucket_name)
