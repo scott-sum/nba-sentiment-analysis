@@ -23,7 +23,7 @@ def download_from_s3(bucket_name, s3_key, dest_path):
     file_dir, file_name = os.path.split(dest_path)
     if not os.path.isdir(file_dir):
         os.makedirs(file_dir)
-        print('created dir')
+        # print('created dir')
     session = aws_session()
     s3_resource = session.resource('s3')
     bucket = s3_resource.Bucket(bucket_name)

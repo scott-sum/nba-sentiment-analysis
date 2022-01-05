@@ -29,8 +29,8 @@ def analysis():
            f'apiKey={news_api_key}')
     news_articles = functions.get_news(url, 5)
 
-    print(os.path.isdir(f'nba_sentiment_analysis/static/graphs/{team_nospace}/'))
-    print(os.getcwd())
+    # print(os.path.isdir(f'nba_sentiment_analysis/static/graphs/{team_nospace}/'))
+    # print(os.getcwd())
 
     download_from_s3(BUCKET_NAME, f'{team_nospace}/wordcloud.png', f'nba_sentiment_analysis/static/graphs/{team_nospace}/wordcloud.png')
     download_from_s3(BUCKET_NAME, f'{team_nospace}/sentiment_vs_time.png', f'nba_sentiment_analysis/static/graphs/{team_nospace}/sentiment_vs_time.png')
@@ -53,9 +53,9 @@ def profile():
     score_stats = []
     for team in saved_teams:
         team_nospace = team.team_name.replace(" ", "_")
-        bar_url = f'/static/graphs/{team_nospace}/bar.png'
-        wc_url = f'/static/graphs/{team_nospace}/wordcloud.png'
-        time_url = f'/static/graphs/{team_nospace}/sentiment_vs_time.png'
+        bar_url = f'nba_sentiment_analysis/static/graphs/{team_nospace}/bar.png'
+        wc_url = f'nba_sentiment_analysis/static/graphs/{team_nospace}/wordcloud.png'
+        time_url = f'nba_sentiment_analysis/static/graphs/{team_nospace}/sentiment_vs_time.png'
 
         download_from_s3(BUCKET_NAME, f'{team_nospace}/bar.png', bar_url)
         download_from_s3(BUCKET_NAME, f'{team_nospace}/wordcloud.png', wc_url)
