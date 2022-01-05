@@ -223,7 +223,7 @@ header {
 .res-art-container {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     padding: 3rem;
 }
 
@@ -285,11 +285,16 @@ header {
     border-radius: 1rem;
     border-style: none;
     background-color: #161616;
+    transition: all .2s ease-in-out;
+}
+
+.pro-saved-team-btn:hover {
+    transform: scale(1.1);
 }
 
 .pro-saved-team-name {
     color: white;
-    font-family: Calibri;
+    font-family: Calibri, sans-serif;
     font-size: 1rem;
     font-weight: bold;
 }
