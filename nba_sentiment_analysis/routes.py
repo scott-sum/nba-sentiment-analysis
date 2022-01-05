@@ -30,6 +30,7 @@ def analysis():
     news_articles = functions.get_news(url, 5)
 
     print(os.path.isdir(f'/static/graphs/{team_nospace}/'))
+    print(os.getcwd())
 
     download_from_s3(BUCKET_NAME, f'{team_nospace}/wordcloud.png', f'/static/graphs/{team_nospace}/wordcloud.png')
     download_from_s3(BUCKET_NAME, f'{team_nospace}/sentiment_vs_time.png', f'/static/graphs/{team_nospace}/sentiment_vs_time.png')
