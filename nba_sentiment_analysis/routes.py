@@ -8,6 +8,7 @@ from datetime import datetime, timedelta
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, logout_user, login_required
 from .s3 import *
+import os
 
 main = Blueprint('main', __name__)
 
@@ -28,7 +29,9 @@ def analysis():
            f'apiKey={news_api_key}')
     news_articles = functions.get_news(url, 5)
 
-    download_from_s3(BUCKET_NAME, f'{team_nospace}/wordcloud.png', f'nbasentimentanalysis/static/graphs/{team_nospace}/wordcloud.png')
+    print(os.path.isdir(f'/static/graphs/{team_nospace}/'))
+
+    download_from_s3(BUCKET_NAME, f'{team_nospace}/wordcloud.png', f'/static/graphs/{team_nospace}/wordcloud.png')
     download_from_s3(BUCKET_NAME, f'{team_nospace}/sentiment_vs_time.png', f'/static/graphs/{team_nospace}/sentiment_vs_time.png')
     download_from_s3(BUCKET_NAME, f'{team_nospace}/bar.png', f'/static/graphs/{team_nospace}/bar.png')
 
