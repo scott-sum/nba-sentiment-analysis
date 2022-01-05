@@ -11,7 +11,7 @@ import matplotlib
 matplotlib.use('agg')
 import atexit
 from datetime import datetime
-import s3
+from .s3 import *
 
 teams = ["atlanta hawks","boston celtics","brooklyn nets","charlotte hornets","chicago bulls","cleveland cavaliers",
          "dallas mavericks","denver nuggets","detroit pistons","golden state warriors","houston rockets",
@@ -45,7 +45,7 @@ def job(app):
             file_path = f'nba_sentiment_analysis/static/graphs/{team_nospace}/sentiment_vs_time.png'
             plt.savefig(file_path, transparent=True)
             plt.close()
-            s3.upload_to_s3(s3.BUCKET_NAME, file_path, team_nospace)
+            upload_to_s3(BUCKET_NAME, file_path, team_nospace)
             
 
 

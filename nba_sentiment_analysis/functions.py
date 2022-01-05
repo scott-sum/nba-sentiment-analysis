@@ -9,7 +9,7 @@ import requests, re, os, string
 from wordcloud import WordCloud
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from .settings import tw_access_token, tw_secret_access_token, tw_consumer_secret_key, tw_consumer_key
-import s3
+from .s3 import *
 
 auth = tweepy.OAuthHandler(tw_consumer_key, tw_consumer_secret_key)
 auth.set_access_token(tw_access_token, tw_secret_access_token)
@@ -86,7 +86,7 @@ def analysis(team_name, num_tweets, mode=1):
     bar_file_path = f'nba_sentiment_analysis/static/graphs/{team_nospace}/bar.png'
     plt.savefig(bar_file_path, transparent=True)
     plt.close()
-    s3.upload_to_s3(s3.BUCKET_NAME, bar_file_path, team_nospace)
+    upload_to_s3(BUCKET_NAME, bar_file_path, team_nospace)
 
     tokens = preprocess_tweets(tweet_list, tw_tokenizer)
     word_frequencies = nltk.FreqDist(tokens)
@@ -99,7 +99,7 @@ def analysis(team_name, num_tweets, mode=1):
     wc_file_path = f'nba_sentiment_analysis/static/graphs/{team_nospace}/wordcloud.png'
     plt.savefig(wc_file_path, transparent=True, facecolor='w', bbox_inches='tight')
     plt.close()
-    s3.upload_to_s3(s3.BUCKET_NAME, wc_file_path, team_nospace)
+    upload_to_s3(BUCKET_NAME, wc_file_path, team_nospace)
     return positive, negative, neutral, tweet_list[:10]
 
 #################### NEWS

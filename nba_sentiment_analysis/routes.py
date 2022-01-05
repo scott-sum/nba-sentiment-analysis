@@ -7,7 +7,7 @@ from .extensions import db
 from datetime import datetime, timedelta
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, logout_user, login_required
-import s3
+from .s3 import *
 
 main = Blueprint('main', __name__)
 
@@ -28,9 +28,9 @@ def analysis():
            f'apiKey={news_api_key}')
     news_articles = functions.get_news(url, 5)
 
-    s3.download_from_s3(s3.BUCKET_NAME, f'{team_nospace}/bar.png', f'/static/graphs/{team_nospace}/bar.png')
-    s3.download_from_s3(s3.BUCKET_NAME, f'{team_nospace}/wordcloud.png', f'/static/graphs/{team_nospace}/wordcloud.png')
-    s3.download_from_s3(s3.BUCKET_NAME, f'{team_nospace}/sentiment_vs_time.png', f'/static/graphs/{team_nospace}/sentiment_vs_time.png')
+    download_from_s3(BUCKET_NAME, f'{team_nospace}/wordcloud.png', f'/static/graphs/{team_nospace}/wordcloud.png')
+    download_from_s3(BUCKET_NAME, f'{team_nospace}/sentiment_vs_time.png', f'/static/graphs/{team_nospace}/sentiment_vs_time.png')
+    download_from_s3(BUCKET_NAME, f'{team_nospace}/bar.png', f'/static/graphs/{team_nospace}/bar.png')
 
     return render_template('results.html', team=team_chosen, tweets=tweets, news=news_articles,
                            bar_url=f'/static/graphs/{team_nospace}/bar.png',
@@ -53,9 +53,9 @@ def profile():
         wc_url = f'/static/graphs/{team_nospace}/wordcloud.png'
         time_url = f'/static/graphs/{team_nospace}/sentiment_vs_time.png'
 
-        s3.download_from_s3(s3.BUCKET_NAME, f'{team_nospace}/bar.png', bar_url)
-        s3.download_from_s3(s3.BUCKET_NAME, f'{team_nospace}/wordcloud.png', wc_url)
-        s3.download_from_s3(s3.BUCKET_NAME, f'{team_nospace}/sentiment_vs_time.png', time_url)
+        download_from_s3(BUCKET_NAME, f'{team_nospace}/bar.png', bar_url)
+        download_from_s3(BUCKET_NAME, f'{team_nospace}/wordcloud.png', wc_url)
+        download_from_s3(BUCKET_NAME, f'{team_nospace}/sentiment_vs_time.png', time_url)
 
         urls.append([bar_url, wc_url, time_url])
 
