@@ -9,6 +9,7 @@ import requests, re, os, string
 from wordcloud import WordCloud
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from .settings import tw_access_token, tw_secret_access_token, tw_consumer_secret_key, tw_consumer_key
+import s3
 
 auth = tweepy.OAuthHandler(tw_consumer_key, tw_consumer_secret_key)
 auth.set_access_token(tw_access_token, tw_secret_access_token)
@@ -18,15 +19,10 @@ stop_words = stopwords.words('english')
 tw_tokenizer = TweetTokenizer()
 
 def update_graphs(base_dir, filename):
-    # print(base_dir)
-    # print(os.path.isdir(base_dir))
     if not os.path.isdir(base_dir):
         os.makedirs(base_dir)
-        print("created directory ", base_dir)
     file_path = os.path.join(base_dir, filename)
-    print('filepath ', file_path, ' ', os.path.isfile(file_path))
     if os.path.isfile(file_path):
-        print('removed existing file')
         os.remove(file_path)
 
 def sentiment_distribution(tweets, mode=1):
@@ -87,20 +83,23 @@ def analysis(team_name, num_tweets, mode=1):
     plt.xlabel('Score')
     plt.ylabel('Frequency')
     update_graphs(f'nba_sentiment_analysis/static/graphs/{team_nospace}/', 'bar.png')
-    plt.savefig(f'nba_sentiment_analysis/static/graphs/{team_nospace}/bar.png', transparent=True)
+    bar_file_path = f'nba_sentiment_analysis/static/graphs/{team_nospace}/bar.png'
+    plt.savefig(bar_file_path, transparent=True)
     plt.close()
+    s3.upload_to_s3(s3.BUCKET_NAME, bar_file_path, team_nospace)
 
     tokens = preprocess_tweets(tweet_list, tw_tokenizer)
     word_frequencies = nltk.FreqDist(tokens)
     word_cloud = WordCloud(background_color='white').generate_from_frequencies(word_frequencies)
     plt.clf()
     plt.imshow(word_cloud)
-    # plt.title("Recent Tweets Wordcloud")
     plt.axis('off')
     plt.tight_layout(pad=0)
     update_graphs(f'nba_sentiment_analysis/static/graphs/{team_nospace}/', 'wordcloud.png')
-    plt.savefig(f'nba_sentiment_analysis/static/graphs/{team_nospace}/wordcloud.png', transparent=True, facecolor='w', bbox_inches='tight')
+    wc_file_path = f'nba_sentiment_analysis/static/graphs/{team_nospace}/wordcloud.png'
+    plt.savefig(wc_file_path, transparent=True, facecolor='w', bbox_inches='tight')
     plt.close()
+    s3.upload_to_s3(s3.BUCKET_NAME, wc_file_path, team_nospace)
     return positive, negative, neutral, tweet_list[:10]
 
 #################### NEWS

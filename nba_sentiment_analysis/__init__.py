@@ -11,6 +11,7 @@ import matplotlib
 matplotlib.use('agg')
 import atexit
 from datetime import datetime
+import s3
 
 teams = ["atlanta hawks","boston celtics","brooklyn nets","charlotte hornets","chicago bulls","cleveland cavaliers",
          "dallas mavericks","denver nuggets","detroit pistons","golden state warriors","houston rockets",
@@ -29,7 +30,6 @@ def job(app):
             db.session.commit()
 
             scores = Score.query.filter_by(team_name=team).order_by(Score.date).all()
-            # print(len(scores))
             x_date = []
             y_score = []
             for score in scores:
@@ -42,9 +42,11 @@ def job(app):
             plt.plot(x_date, y_score)
             plt.gcf().autofmt_xdate()
             update_graphs(f'nba_sentiment_analysis/static/graphs/{team_nospace}/', 'sentiment_vs_time.png')
-            plt.savefig(f'nba_sentiment_analysis/static/graphs/{team_nospace}/sentiment_vs_time.png', transparent=True)
-            print('saved figure')
+            file_path = f'nba_sentiment_analysis/static/graphs/{team_nospace}/sentiment_vs_time.png'
+            plt.savefig(file_path, transparent=True)
             plt.close()
+            s3.upload_to_s3(s3.BUCKET_NAME, file_path, team_nospace)
+            
 
 
 

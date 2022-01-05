@@ -49,6 +49,7 @@ pyparsing = "==3.0.6"
 psycopg2 = "==2.9.2"
 psycopg2-binary = "==2.9.2"
 psycopg2-pool = "==1.1"
+boto3 = "*"
 
 [dev-packages]
 
