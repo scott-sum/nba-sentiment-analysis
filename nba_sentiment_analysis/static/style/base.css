@@ -5,7 +5,7 @@ html, body{
 
 body {
     background-color: #FA8320;
-    font-family: Calibri, sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
     color: white;
 }
@@ -24,37 +24,42 @@ header {
 .page-title {
     margin-top: 4rem;
     margin-bottom: 2rem;
-    font-size: 4rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    font-size: 2rem;
     color: white;
 }
-
-
 
 .navbar {
     display: flex;
     align-items: center;
-    padding: 0rem 2rem;
+    justify-content: space-between;
     background-color: #161616;
+    padding: 1rem;
 }
 
 .nav-logo {
     display: inline-block;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 2rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+    margin-right: 1.5rem;
 }
 
 .nav-links {
-  list-style: none;
-  display: flex;
-  margin: 0;
+    display: none;
+    list-style: none;
+    padding: 0;
 }
 
 .nav-item a {
   display: inline-block;
-  padding: 1.5rem;
+  padding: 1rem;
   text-decoration: none;
   color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: bold;
+  font-size: 0.5rem;
 }
 
 .navbar li a:hover:not(.active) {
@@ -63,6 +68,75 @@ header {
 
 .navbar li a.active {
   background-color: #1DA1F2;
+}
+
+.icon {
+    display: block;
+}
+
+.icon div {
+    width: 2rem;
+    height: 0.25rem;
+    background-color: white;
+    margin: 0.5rem 0;
+}
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+    .page-title {
+        font-size: 3rem;
+    }
+
+    .nav-item a {
+        padding: 1.5rem 1rem;
+        font-size: 0.6rem;
+    }
+
+    .navbar {
+        padding: 0rem 1rem;
+    }
+    .nav-logo {
+        font-size: 1.25rem;
+    }
+    .nav-links {
+        list-style: none;
+        display: flex;
+        margin: 0;
+    }
+    .icon {
+        display: none;
+    }
+    .icon div {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    .page-title {
+        font-size: 3rem;
+    }
+
+    .nav-item a {
+        padding: 1.5rem 1rem;
+        font-size: 0.75rem;
+    }
+
+    .navbar {
+        padding: 0rem 1rem;
+    }
+    .nav-logo {
+        font-size: 1.5rem;
+    }
+    .nav-links {
+        list-style: none;
+        display: flex;
+        margin: 0;
+    }
+    .icon {
+        display: none;
+    }
+    .icon div {
+        display: none;
+    }
 }
 
 /* *********************************************************** */
@@ -80,6 +154,7 @@ header {
     border-radius: 1rem;
     border-style: none;
     font-weight: bold;
+    color: black;
 }
 
 .home-submit:hover {
@@ -91,7 +166,7 @@ header {
 }
 
 .home-dropdown {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     text-align: center;
     padding: 0.5rem 0rem;
     margin: 2rem;
@@ -104,52 +179,35 @@ header {
     font-size: 1rem;
 }
 
+.home-title {
+    font-size: 1rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}
+
 .home-nba-logo {
     width: 30%;
     height: auto;
+    margin-top: 3rem;
 }
+
 /* *********************************************************** */
 
 .res {
     display: block;
+    margin: 0rem 1rem;
 }
 
-@media only screen and (max-width: 1025px) {
-    .res-row {
-        display: block;
-    }
-
-    .res-box {
-        margin-bottom: 3rem;
-    }
-
-    .res-content {}
-
-    .res-art-img {
-        width: 15rem;
-    }
+.res-row {
+    display: block;
 }
 
-@media only screen and (min-width: 1025px) {
-    .res-row {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 3rem;
-    }
+.res-box {
+    margin-bottom: 3rem;
+}
 
-    .res-box {
-        display: block;
-        width: 50%;
-    }
-
-    .res-content {
-        width: 80%;
-    }
-
-    .res-art-img {
-        width: 20rem;
-    }
+.res-content {
+    width: 100%;
 }
 
 .res-cloud {
@@ -160,7 +218,6 @@ header {
     display: block;
     height: 30rem;
     width: auto;
-    margin: 0% 10%;
     overflow: auto;
     padding: 0% 5%;
     background-color: #1DA1F2;
@@ -174,6 +231,7 @@ header {
     align-items: center;
     justify-content: center;
     padding: 5% 0%;
+    font-size: 0.75rem;
 }
 
 .res-tw-usr {
@@ -190,9 +248,6 @@ header {
 
 .res-tw-usr-name {
     color: white;
-}
-
-.res-tw-text {
 }
 
 .res-tw-link {
@@ -214,21 +269,14 @@ header {
 .res-arts {
     width: auto;
     display: block;
-    margin: 0rem 5rem;
     background-color: black;
     border-radius: 1rem;
 
 }
 
 .res-art-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 3rem;
-}
-
-.res-art-text {
-    text-align: left;
+    padding: 1rem;
+    font-size: 0.75rem;
 }
 
 .res-art-link {
@@ -236,15 +284,12 @@ header {
     text-decoration: none;
 }
 
-.res-art-title {
-
-}
 
 .res-art-img {
     height: auto;
     max-width: 100%;
-    margin-left: 2rem;
     border-radius: 1rem;
+    width: 50%;
 }
 
 .res-return {
@@ -261,6 +306,37 @@ header {
 
 .res-return:active {
     transform: scale(1.5);
+}
+
+@media only screen and (min-width: 769px) {
+    .res-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 3rem;
+    }
+
+    .res-box {
+        display: block;
+        width: 50%;
+    }
+
+    .res-content {
+        width: 80%;
+    }
+
+    .res-tweets {
+        margin: auto;
+    }
+
+    .res-art-img {
+        width: 20rem;
+    }
+
+    .res-art-container {
+        padding: 2rem;
+        font-size: 1rem;
+    }
 }
 
 /* *********************************************************** */

@@ -3,7 +3,12 @@
 {% block navigation %}
     <nav class="navbar">
         <a class="nav-logo">NBA Sentiment Analysis</a>
-        <ul class="nav-links">
+        <a class="icon" onclick="resp_navbar()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </a>
+        <ul class="nav-links" id="nav-links">
             <li class="nav-item"><a href="{{ url_for('main.index') }}">Home</a></li>
 
             {% if not current_user.is_authenticated %}
@@ -45,7 +50,7 @@
             {% endfor %}
         </div>
         {% for url_group in urls %}
-            <div class="pro-content" id="{{ teams[loop.index0] | replace(' ', '') }}">
+            <div class="res-content" id="{{ teams[loop.index0] | replace(' ', '') }}">
                 <h3 class="pro-saved-team-title">{{ teams[loop.index0].title() }}</h3>
                 <div class="res-row">
                     <div class="res-box">
