@@ -39,7 +39,7 @@
                     <button class="pro-saved-team-btn" id="{{ teams[loop.index0] | replace(' ', '') + 'button' }}"
                             onclick="show_team('{{ team | replace(' ', '') }}', '{{ team | replace(' ', '') + 'button' }}')">
                         <img class="pro-saved-team-logo" src="/static/logos/{{ teams[loop.index0] | replace(' ', '') }}.png">
-                        <p class="pro-saved-team-name">{{ team.title() }}</p>
+                        <!-- <p class="pro-saved-team-name">{{ team.title() }}</p> -->
                     </button>
                     <div class="pro-saved-team-remove">
                         <form action="{{ url_for('main.remove_team', team_to_remove=team) }}">
@@ -50,20 +50,20 @@
             {% endfor %}
         </div>
         {% for url_group in urls %}
-            <div class="res-content" id="{{ teams[loop.index0] | replace(' ', '') }}">
+            <div class="pro-content" id="{{ teams[loop.index0] | replace(' ', '') }}">
                 <h3 class="pro-saved-team-title">{{ teams[loop.index0].title() }}</h3>
                 <div class="res-row">
                     <div class="res-box">
-                        <img class="res-bar" src={{ url_group[0] }}>
+                        <img class="res-content" src={{ url_group[0] }}>
                     </div>
                     <div class="res-box">
-                        <img class="res-time" src={{ url_group[2] }}>
+                        <img class="res-content" src={{ url_group[2] }}>
                     </div>
                 </div>
                 <div class="res-row">
                     <div class="res-box">
                         <h3>Recent Tweets Word Cloud</h3>
-                        <img class="res-cloud" src={{ url_group[1] }}>
+                        <img class="res-content res-cloud" src={{ url_group[1] }}>
                     </div>
                     <div class="res-box">
                         <div class="pro-stats">

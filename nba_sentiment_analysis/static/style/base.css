@@ -193,9 +193,12 @@ header {
 
 /* *********************************************************** */
 
+.content {
+    margin: 0rem 1rem;
+}
+
 .res {
     display: block;
-    margin: 0rem 1rem;
 }
 
 .res-row {
@@ -342,22 +345,21 @@ header {
 /* *********************************************************** */
 
 .pro-saved-title {
-    font-size: 2rem;
+    font-size: 1.25rem;
 }
 
 .pro-saved-list {
-    margin-bottom: 5rem;
+    margin-bottom: 3rem;
 }
 
 .pro-saved-team-box {
     display: inline-block;
     margin-right: 2rem;
-    border-radius: 2rem;
     position: relative;
 }
 
 .pro-saved-team-btn {
-    padding: 1rem;
+    padding: 1.25rem;
     border-radius: 1rem;
     border-style: none;
     background-color: #161616;
@@ -368,13 +370,6 @@ header {
     transform: scale(1.1);
 }
 
-.pro-saved-team-name {
-    color: white;
-    font-family: Calibri, sans-serif;
-    font-size: 1rem;
-    font-weight: bold;
-}
-
 .pro-saved-team-logo {
     width: 4rem;
     height: 4rem;
@@ -382,7 +377,7 @@ header {
 
 
 .pro-saved-team-title {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
 }
 
 .pro-saved-team-remove {
@@ -398,15 +393,18 @@ header {
 
 .pro-content {
     display: none;
-    margin-bottom: 5rem;
 }
 
 .pro-save-form {
     margin-bottom: 5rem;
 }
 
+.pro-stats {
+    margin-bottom: 5rem;
+}
+
 .pro-stats-title {
-    font-size: 2rem;
+    font-size: 1.25rem;
     font-weight: bold;
 }
 
@@ -415,13 +413,30 @@ header {
 }
 
 .pro-stat {
-    font-size: 1.5rem;
+    font-size: 1rem;
 }
 
 .pro-save-another {
     font-size: 2rem;
     margin-bottom: 0;
 }
+
+@media only screen and (min-width: 769px) {
+    .pro-saved-team-title {
+        font-size: 2rem;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .pro-stat {
+        font-size: 1.25rem;
+    }
+
+    .pro-stats-title {
+        font-size: 1.5rem;
+    }
+}
+
 
 
 
